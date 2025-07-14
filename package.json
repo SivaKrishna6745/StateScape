@@ -6,7 +6,7 @@
     "type": "module",
     "peerDependencies": {
         "react": "^18 || ^19",
-        "react-redux": "^9",
+        "react-redux": "^9.2.0",
         "redux": "^5"
     },
     "scripts": {
