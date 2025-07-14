@@ -3,6 +3,7 @@ import './App.css';
 import StateScape from './StateScape';
 import { toggleTheme } from './features/ui/uiSlice';
 import { setLayoutMode } from './features/settings/settingsSlice';
+import { toggleTraceMode } from './features/debug/debugSlice';
 import { useDispatch } from 'react-redux';
 
 function App() {
@@ -18,7 +19,10 @@ function App() {
                 className="bg-green-400 p-2 rounded-lg cursor-pointer"
                 onClick={() => dispatch(setLayoutMode('list'))}
             >
-                Swirch to List Layout
+                Switch to List Layout
+            </button>
+            <button className="bg-green-400 p-2 rounded-lg cursor-pointer" onClick={() => dispatch(toggleTraceMode())}>
+                Toggle Trace Mode
             </button>
         </>
     );

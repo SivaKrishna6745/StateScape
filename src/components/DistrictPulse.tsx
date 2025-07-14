@@ -31,7 +31,7 @@ const DistrictPulse = ({ pulse }: DistrictPulseProps) => {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.3 }}
             className="bg-red-500/80 p-4 rounded-xl m-4 shadow-md"
-            style={{ backgroundColor: getSliceColor(pulse.themeColor) }}
+            style={{ backgroundColor: getSliceColor(pulse.slice) }}
         >
             <div className="font-bold text-red-300">{pulse.slice}</div>
             <div className="text-sm text-white/70">From: {JSON.stringify(pulse.from)}</div>
