@@ -1,5 +1,4 @@
-import React from 'react';
-import { easeOut, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const getSliceColor = (slice: string) => {
     const map: Record<string, string> = {
@@ -18,8 +17,8 @@ const emojiMap: Record<string, string> = {
 
 type StatePulse = {
     slice: string;
-    from: any;
-    to: any;
+    from: unknown;
+    to: unknown;
     timestamp: number;
     themeColor: string;
     id: string;

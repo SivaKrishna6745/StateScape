@@ -6,8 +6,8 @@ import { motion } from 'framer-motion';
 
 type StatePulse = {
     slice: string;
-    from: any;
-    to: any;
+    from: unknown;
+    to: unknown;
     timestamp: number;
     themeColor: string;
     id: string;
@@ -17,7 +17,7 @@ const StateScape: React.FC = () => {
     const [stateArray, setStateArray] = useState<StatePulse[]>([]);
     const store = useStore();
 
-    const onChange = (slice: string, from: any, to: any) => {
+    const onChange = (slice: string, from: unknown, to: unknown) => {
         const newPulse: StatePulse = {
             slice: slice,
             from: from,

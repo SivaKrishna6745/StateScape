@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import type { Store } from '@reduxjs/toolkit';
 
-type StateChangeCallback = (slice: string, prevValue: any, nextValue: any) => void;
+type StateChangeCallback = (slice: string, prevValue: unknown, nextValue: unknown) => void;
 const useStateObserver = (store: Store, onChange: StateChangeCallback) => {
     const prevStateRef = useRef(store.getState());
     useEffect(() => {

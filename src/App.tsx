@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './App.css';
 import StateScape from './StateScape';
 import { toggleTheme } from './features/ui/uiSlice';
