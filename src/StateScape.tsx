@@ -37,14 +37,18 @@ const StateScape: React.FC = () => {
     const lastPulseBySlice = useRef<Record<string, number>>({});
 
     const [activeState, setActiveState] = useState<null | 'ui' | 'settings' | 'debug'>(null);
-    const btnGrpbtnClasses = 'w-30 p-2 m-2 rounded-lg cursor-pointer transition-all duration-150';
+    const btnGrpbtnClasses = 'w-30 p-2 m-2 rounded-lg transition-all duration-150';
     const dynBtnClass = (slice: null | 'ui' | 'settings' | 'debug') =>
-        `${btnGrpbtnClasses} ${activeState === slice ? 'bg-indigo-500' : 'bg-indigo-300'}`;
+        `${btnGrpbtnClasses} ${
+            activeState === slice
+                ? 'bg-indigo-500 cursor-default'
+                : 'cursor-pointer bg-indigo-300 hover:bg-indigo-400 hover:scale-110'
+        }`;
 
     return (
-        <div className="text-center text-poppins">
-            StateScape coming soon...
-            <div className="bg-zinc-900 rounded p-2 mb-2 border border-red-400">
+        <div className="text-center text-poppins flex flex-col gap-4">
+            <h2 className="text-2xl my-2">StateScape coming soon...</h2>
+            <div className="bg-zinc-600 rounded p-2 mb-2 ">
                 <div className="flex justify-center gap-4">
                     <button className={`${btnGrpbtnClasses} ${dynBtnClass('ui')}`} onClick={() => setActiveState('ui')}>
                         UI
@@ -75,19 +79,21 @@ const StateScape: React.FC = () => {
                         },
                     }}
                 >
-                    {Object.entries(grouped)
-                        .filter(([sliceName]) => activeState === null || sliceName === activeState)
-                        .map(([sliceName, pulses]) => (
-                            <div key={sliceName} className="border p-2 rounded shadow">
-                                <h3 className="text-lg font-bold mb-2 text-sky-300">{sliceName}</h3>
-                                {pulses.map((p) => {
-                                    const lastTimeStamp = lastPulseBySlice.current[p.slice] || p.timestamp;
-                                    const deltaSeconds = ((p.timestamp - lastTimeStamp) / 1000).toFixed(1);
-                                    lastPulseBySlice.current[p.slice] = p.timestamp;
-                                    return <DistrictPulse key={p.id} pulse={p} time={deltaSeconds} />;
-                                })}
-                            </div>
-                        ))}
+                    <div className={`my-4 grid gap-4 ${activeState === null ? 'grid-cols-3' : 'grid-cols-1'}`}>
+                        {Object.entries(grouped)
+                            .filter(([sliceName]) => activeState === null || sliceName === activeState)
+                            .map(([sliceName, pulses]) => (
+                                <div key={sliceName} className="border p-2 rounded shadow">
+                                    <h3 className="text-xl font-bold mb-2 text-sky-300">{sliceName}</h3>
+                                    {pulses.map((p) => {
+                                        const lastTimeStamp = lastPulseBySlice.current[p.slice] || p.timestamp;
+                                        const deltaSeconds = ((p.timestamp - lastTimeStamp) / 1000).toFixed(1);
+                                        lastPulseBySlice.current[p.slice] = p.timestamp;
+                                        return <DistrictPulse key={p.id} pulse={p} time={deltaSeconds} />;
+                                    })}
+                                </div>
+                            ))}
+                    </div>
                 </motion.div>
             </div>
         </div>

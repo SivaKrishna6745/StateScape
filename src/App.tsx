@@ -10,20 +10,29 @@ function App() {
     const dispatch = useDispatch();
     return (
         <>
-            <h1 className="text-4xl text-center">State Scape</h1>
+            <h1 className="text-5xl text-center my-4">State Scape</h1>
+            <hr className="border-b-2 border-slate-500" />
+            <div className="mt-4 flex justify-center gap-8">
+                <button
+                    className="bg-green-400 w-50 h-12 rounded-md cursor-pointer transition-all duration-250 hover:bg-green-600/80 hover:scale-110"
+                    onClick={() => dispatch(toggleTheme())}
+                >
+                    Toggle UI
+                </button>
+                <button
+                    className="bg-green-400 w-50 h-12 rounded-md cursor-pointer transition-all duration-250 hover:bg-green-600/80 hover:scale-110"
+                    onClick={() => dispatch(setLayoutMode('list'))}
+                >
+                    Switch to List Layout
+                </button>
+                <button
+                    className="bg-green-400 w-50 h-12 rounded-md cursor-pointer transition-all duration-250 hover:bg-green-600/80 hover:scale-110"
+                    onClick={() => dispatch(toggleTraceMode())}
+                >
+                    Toggle Trace Mode
+                </button>
+            </div>
             <StateScape />
-            <button className="bg-green-400 p-2 rounded-lg cursor-pointer" onClick={() => dispatch(toggleTheme())}>
-                Toggle UI
-            </button>
-            <button
-                className="bg-green-400 p-2 rounded-lg cursor-pointer"
-                onClick={() => dispatch(setLayoutMode('list'))}
-            >
-                Switch to List Layout
-            </button>
-            <button className="bg-green-400 p-2 rounded-lg cursor-pointer" onClick={() => dispatch(toggleTraceMode())}>
-                Toggle Trace Mode
-            </button>
         </>
     );
 }

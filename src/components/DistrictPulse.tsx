@@ -42,7 +42,7 @@ const DistrictPulse = ({ pulse, time }: DistrictPulseProps) => {
             className="bg-red-500/80 p-4 rounded-xl m-4 shadow cursor-pointer"
             style={{ backgroundColor: getSliceColor(pulse.slice) }}
         >
-            <div className="font-bold text-red-300">
+            <div className="font-bold text-xl text-slate-800">
                 {emojiMap[pulse.slice] || '🔘'} {pulse.slice}
             </div>
             <div className="text-xs opacity-60">
